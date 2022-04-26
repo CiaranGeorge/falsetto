@@ -5,15 +5,17 @@ import ButtonGroup from 'components/ButtonGroup';
 import Container from 'components/Container';
 import HeroIllustration from 'components/HeroIllustation';
 import OverTitle from 'components/OverTitle';
+import SectionTitle from 'components/SectionTitle';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { media } from 'utils/media';
 import { Transition } from 'react-transition-group';
+import BasicSection from 'components/BasicSection';
 
 export default function Hero() {
   const { setIsModalOpened } = useNewsletterModalContext();
 
   return (
-    <div className="video-background">
+    <VideoContainer>
       <Transition in={true} timeout={1000} appear={true}>
         <video style={{width: "100vw"}}
           src="/type-vid.mp4"
@@ -24,91 +26,27 @@ export default function Hero() {
         >
           </video>
       </Transition>
-    </div>
-  );
-
-  return (
-    <HeroWrapper>
-      <Contents>
-        <CustomOverTitle>the coolest, saas product you have ever seen</CustomOverTitle>
-        <Heading>Make your life easier with our SaaS</Heading>
-        <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, tempora qui. Explicabo voluptate iure ipsum molestias
-          repudiandae perspiciatis nostrum praesentium, unde pariatur tempora magni rem. Necessitatibus facilis obcaecati ratione.
-        </Description>
-        <CustomButtonGroup>
-          <Button onClick={() => setIsModalOpened(true)}>
-            Subscribe to the newsletter <span>&rarr;</span>
-          </Button>
-          <NextLink href="#whitepaper" passHref>
-            <Button transparent>
-              Features <span>&rarr;</span>
-            </Button>
-          </NextLink>
-        </CustomButtonGroup>
-      </Contents>
-      <ImageContainer>
-        <HeroIllustration />
-      </ImageContainer>
-    </HeroWrapper>
+      <CustomContainer>
+        <Content>
+          <Heading>falsetto<Suffix>.ai</Suffix></Heading>
+          <SectionTitle>A 10x Force Multiplier for Collaboration Application Compliance</SectionTitle>
+          <Description>falsetto.ai provides a unified view of collaboration applications running across your enterprise, surfacing real-time trends and insights on who needs coaching and what skills need to be developed. </Description>
+        </Content>
+      </CustomContainer>
+    </VideoContainer>
   );
 }
-
-const HeroWrapper = styled(Container)`
-  display: flex;
-  padding-top: 5rem;
-
-  ${media('<=desktop')} {
-    padding-top: 1rem;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const Contents = styled.div`
-  flex: 1;
-  max-width: 60rem;
-
-  ${media('<=desktop')} {
-    max-width: 100%;
-  }
-`;
-
-const CustomButtonGroup = styled(ButtonGroup)`
-  margin-top: 4rem;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  align-items: flex-start;
-
-  svg {
-    max-width: 45rem;
-  }
-
-  ${media('<=desktop')} {
-    margin-top: 2rem;
-    justify-content: center;
-    svg {
-      max-width: 80%;
-    }
-  }
-`;
 
 const Description = styled.p`
   font-size: 1.8rem;
   opacity: 0.8;
   line-height: 1.6;
+  display: none;
 
   ${media('<=desktop')} {
     font-size: 1.5rem;
+    display: block;
   }
-`;
-
-const CustomOverTitle = styled(OverTitle)`
-  margin-bottom: 2rem;
 `;
 
 const Heading = styled.h1`
@@ -122,4 +60,36 @@ const Heading = styled.h1`
     font-size: 4.6rem;
     margin-bottom: 2rem;
   }
+`;
+
+const Content = styled.div`
+  & > *:not(:first-child) {
+    margin-top: 1rem;
+  }
+  text-align: center;
+`;
+
+const VideoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: rgba(var(--text));
+  text-shadow: -1px 1px 3px #676767;
+  ${media('<=desktop')} {
+    display: block;
+    text-shadow: none;
+  }
+`;
+
+const CustomContainer = styled(Container)`
+  position: absolute;
+  max-width: 100%;
+  padding: 0 10%;
+  ${media('<=desktop')} {
+    position: relative;
+    padding: 6rem 2rem 0 2rem;
+  }
+`;
+
+const Suffix = styled.span`
+  color: rgba(var(--primary));
 `;

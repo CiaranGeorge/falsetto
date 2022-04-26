@@ -69,7 +69,7 @@ export default function Navbar({ items }: NavbarProps) {
       <Content>
         <NextLink href="/" passHref>
           <LogoWrapper>
-            <a>Falsetto.AI</a>
+            <a>falsetto<Suffix>.ai</Suffix></a>
           </LogoWrapper>
         </NextLink>
         <NavItemList>
@@ -134,7 +134,6 @@ const LogoWrapper = styled.a`
   text-decoration: none;
   border-radius: 0.5rem;
   font-size: 1.6rem;
-  text-transform: uppercase;
   font-weight: 800;
   color: rgb(var(--logoColor));
 `;
@@ -193,4 +192,8 @@ const Content = styled(Container)`
 const ColorSwitcherContainer = styled.div`
   width: 4rem;
   margin: 0 1rem;
+`;
+
+const Suffix = styled.span`
+  color: rgba(var(--primary));
 `;

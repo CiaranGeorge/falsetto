@@ -20,6 +20,7 @@ import { NewsletterModalContextProvider, useNewsletterModalContext } from 'conte
 import { NavItems } from 'types';
 
 const navItems: NavItems = [
+  { title: 'Home', href: '/' },
   { title: 'Features', href: '/features' },
   { title: 'Pricing', href: '/pricing' },
   { title: 'Contact', href: '/contact' },
